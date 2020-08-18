@@ -56,7 +56,10 @@ app.post("/repositories/:id/like", (request, response) => {
   if (repositoryIndex < 0){ 
     return response.status(400).send({error: "Repostory not found!"})
   }
-  likes: repositories[repositoryIndex].likes + 1
+  repositories[repositoryIndex] = {
+    ...repositories[repositoryIndex],
+    likes: repositories[repositoryIndex].likes + 1
+  }
   return response.json({likes: repositories[repositoryIndex].likes})
 });
 
